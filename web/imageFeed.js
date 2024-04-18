@@ -252,9 +252,12 @@ app.registerExtension({
         objectFit: 'cover',
       })
 
-      img.src = `/view?filename=${encodeURIComponent(src.filename)}&type=${
-        src.type
-      }&subfolder=${encodeURIComponent(src.subfolder)}`
+      if (src.url) {
+        img.src = src.url
+      } else {
+        img.src = `/view?filename=${encodeURIComponent(src.filename)}&type=${src.type
+          }&subfolder=${encodeURIComponent(src.subfolder)}`
+      }
 
       imageUrls.push(img.src)
 
